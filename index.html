@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Libertad Laboral</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9fbfc;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #01BD39;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #018F2D;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #22C0DC;
+        }
+        .cta-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #01BD39;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .cta-button:hover {
+            background-color: #018F2D;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Libertad Laboral</h1>
+        <p>Diseña tu carrera digital ideal ingresando tus objetivos y habilidades.</p>
+        <form id="simulatorForm">
+            <label for="goals">Tus metas financieras mensuales ($):</label>
+            <input type="number" id="goals" min="1" required>
+
+            <label for="skills">Número de habilidades digitales relevantes que posees:</label>
+            <input type="number" id="skills" min="1" required>
+
+            <label for="time">Horas disponibles por semana:</label>
+            <input type="number" id="time" min="1" required>
+
+            <button type="button" onclick="simulateFreedom()">Generar Plan</button>
+        </form>
+        <div class="result" id="result"></div>
+        <div class="cta-container">
+            <p class="highlight-text">Descubre el Secreto de Reinventarse Profesionalmente en Solo 14 Días</p>
+            <a href="https://klicana.work/Ecpzgd" class="cta-button">Acceder al Simulador</a>
+        </div>
+    </div>
+
+    <script>
+        function simulateFreedom() {
+            const goals = parseFloat(document.getElementById('goals').value);
+            const skills = parseInt(document.getElementById('skills').value);
+            const time = parseInt(document.getElementById('time').value);
+
+            if (!isNaN(goals) && !isNaN(skills) && !isNaN(time)) {
+                const hourlyRate = (goals / (time * 4)).toFixed(2);
+                const message = `
+                    <p>Para alcanzar tus metas de $${goals}/mes, necesitas trabajar ${time} horas semanales a una tarifa de $${hourlyRate}/hora.</p>
+                    <p>¡Con tus ${skills} habilidades, estás más cerca de lograrlo!</p>
+                `;
+                document.getElementById('result').innerHTML = message;
+            } else {
+                document.getElementById('result').innerHTML = `<span style="color: red;">Por favor, ingresa valores válidos.</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
